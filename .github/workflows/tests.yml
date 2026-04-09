@@ -29,14 +29,14 @@ jobs:
       - name: Build and run unit and integration tests
         run: ./gradlew build integrationTest --info
       - name: Archive test report
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: Test report
           path: build/reports/tests/integrationTest
           if-no-files-found: ignore
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
