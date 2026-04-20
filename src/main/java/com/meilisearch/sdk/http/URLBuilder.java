@@ -21,6 +21,9 @@ public class URLBuilder {
     }
 
     public URLBuilder addSubroute(String route) {
+        if (route == null || route.isEmpty()) {
+            throw new IllegalArgumentException("route segment must not be null or empty");
+        }
         routes.append("/");
         routes.append(route);
         return this;

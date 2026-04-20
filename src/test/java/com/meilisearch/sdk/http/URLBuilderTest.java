@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,6 +31,14 @@ public class URLBuilderTest {
                 .addSubroute("route4");
 
         assertThat(classToTest.getRoutes().toString(), is(equalTo("/route1/route2/route3/route4")));
+    }
+
+    @Test
+    void addSubrouteWithNullOrEmptyRoute() {
+        assertThat(
+                assertThrows(IllegalArgumentException.class, () -> classToTest.addSubroute(""))
+                        .getMessage(),
+                is(equalTo("route segment must not be null or empty")));
     }
 
     @Test
