@@ -482,6 +482,18 @@ public class Client {
         this.config.httpClient.patch("/experimental-features", features, Void.class);
     }
 
+    /**
+     * Renders a template using the experimental render-template route.
+     *
+     * @param request Render template request body
+     * @return Rendered template result
+     * @throws MeilisearchException if an error occurs
+     */
+    public RenderTemplateResult renderTemplate(RenderTemplateRequest request)
+            throws MeilisearchException {
+        return this.config.httpClient.post("/render-template", request, RenderTemplateResult.class);
+    }
+
     public String generateTenantToken(String apiKeyUid, Map<String, Object> searchRules)
             throws MeilisearchException {
         return this.generateTenantToken(apiKeyUid, searchRules, new TenantTokenOptions());
