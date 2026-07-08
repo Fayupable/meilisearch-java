@@ -640,7 +640,6 @@ webhooks_patch_1: |-
   Webhook updated_webhook = this.client.updateWebhook(webhook.getUuid(), webhookReq2);
 webhooks_delete_1: |-
   this.client.deleteWebhook("WEBHOOK_UUID");
-  
 
 post_render_template_1: |-
   Map<String, Boolean> features = new HashMap<>();
