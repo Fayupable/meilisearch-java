@@ -640,3 +640,27 @@ webhooks_patch_1: |-
   Webhook updated_webhook = this.client.updateWebhook(webhook.getUuid(), webhookReq2);
 webhooks_delete_1: |-
   this.client.deleteWebhook("WEBHOOK_UUID");
+
+post_render_template_1: |-
+  Map<String, Boolean> features = new HashMap<>();
+  features.put("renderRoute", true);
+  client.experimentalFeatures(features);
+
+  Map<String, Object> template = new HashMap<>();
+  template.put("kind", "inlineDocumentTemplate");
+  template.put("inline", "Product {{doc.name}} is a {{doc.color}} {{doc.category}}.");
+
+  Map<String, Object> product = new HashMap<>();
+  product.put("name", "Nike Air Max");
+  product.put("color", "Black");
+  product.put("category", "Shoes");
+
+  Map<String, Object> input = new HashMap<>();
+  input.put("kind", "inlineDocument");
+  input.put("inline", product);
+
+  RenderTemplateRequest request = new RenderTemplateRequest()
+      .setTemplate(template)
+      .setInput(input);
+
+  client.renderTemplate(request);
