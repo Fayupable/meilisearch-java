@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Meilisearch Dynamic Search Rule.
@@ -12,6 +13,7 @@ import lombok.Getter;
  *     specification</a>
  */
 @Getter
+@Setter
 public class DynamicSearchRule implements Serializable {
     protected String uid;
     protected String description;
@@ -19,6 +21,8 @@ public class DynamicSearchRule implements Serializable {
     protected boolean active;
     protected List<Map<String, Object>> conditions;
     protected List<Map<String, Object>> actions;
+
+    public DynamicSearchRule() {}
 
     public DynamicSearchRule(
             String uid,
