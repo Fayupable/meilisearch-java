@@ -33,8 +33,7 @@ public class DynamicSearchRulesTest extends AbstractIT {
     }
 
     private DynamicSearchRule buildTestRule(String uid) {
-        Map<String, Object> queryCondition =
-                Map.of("scope", "query", "isEmpty", true);
+        Map<String, Object> queryCondition = Map.of("scope", "query", "isEmpty", true);
         Map<String, Object> action =
                 Map.of(
                         "selector", Map.of("indexUid", "products"),
@@ -79,7 +78,7 @@ public class DynamicSearchRulesTest extends AbstractIT {
         Results<DynamicSearchRule> results =
                 client.listDynamicSearchRules(new DynamicSearchRulesQuery());
 
-        assertThat(results.getResults().size() >= 2, equalTo(true));
+        assertThat(results.getResults().length >= 2, equalTo(true));
     }
 
     @Test

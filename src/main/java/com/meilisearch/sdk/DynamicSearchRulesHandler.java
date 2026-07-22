@@ -14,11 +14,11 @@ class DynamicSearchRulesHandler {
         httpClient = config.httpClient;
     }
 
-   Results<DynamicSearchRule> listDynamicSearchRules(DynamicSearchRulesQuery query)
-        throws MeilisearchException {
-    return httpClient.post(
-            dynamicSearchRulesPath().getURL(), query, Results.class, DynamicSearchRule.class);
-}
+    Results<DynamicSearchRule> listDynamicSearchRules(DynamicSearchRulesQuery query)
+            throws MeilisearchException {
+        return httpClient.post(
+                dynamicSearchRulesPath().getURL(), query, Results.class, DynamicSearchRule.class);
+    }
 
     DynamicSearchRule getDynamicSearchRule(String uid) throws MeilisearchException {
         return httpClient.get(
